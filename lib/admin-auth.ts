@@ -22,8 +22,8 @@ export function checkAdminPassword(candidate: string): boolean {
   if (!expected) {
     throw new Error("ADMIN_PASSWORD is not set in .env.local");
   }
-  const a = Buffer.from(candidate);
-  const b = Buffer.from(expected);
+  const a = new TextEncoder().encode(candidate);
+  const b = new TextEncoder().encode(expected);
   if (a.length !== b.length) return false;
   return crypto.timingSafeEqual(a, b);
 }
@@ -32,8 +32,8 @@ export function isValidSessionToken(token: string | undefined): boolean {
   if (!token) return false;
   try {
     const expected = getAdminSessionToken();
-    const a = Buffer.from(token);
-    const b = Buffer.from(expected);
+    const a = new TextEncoder().encode(token);
+    const b = new TextEncoder().encode(expected);
     if (a.length !== b.length) return false;
     return crypto.timingSafeEqual(a, b);
   } catch {
