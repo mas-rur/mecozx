@@ -21,8 +21,10 @@ export const metadata: Metadata = {
   description:
     "The world's first T-OLED smart card powered by inductive coupling. Transparent. Biometric. Crypto.",
   icons: { icon: "/logo.jpg" },
+  verification: {
+    google: "RomfRyvPLETykk8zrkagsCwgNg52PyGOVvjNUO7SAAE",
+  },
 };
-
 export default function RootLayout({
   children,
 }: {
